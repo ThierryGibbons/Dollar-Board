@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]); // Triggered every time the messages array changes
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -19,6 +28,7 @@ const ChatBox = () => {
             {message}
           </div>
         ))}
+        <div ref={messagesEndRef} /> {/* Invisible element to scroll to */}
       </div>
       <form onSubmit={handleSendMessage} className="flex space-x-2">
         <input
