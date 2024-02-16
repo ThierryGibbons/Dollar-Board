@@ -14,6 +14,19 @@ export default {
      },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.hide-scrollbar': {
+          scrollbarWidth: 'none', /* Firefox */
+          '-ms-overflow-style': 'none', /* Internet Explorer 10+ */
+          '&::-webkit-scrollbar': {
+            display: 'none', /* Chrome, Safari, Opera */
+          },
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 }
 

@@ -16,16 +16,19 @@ const ChatBox = () => {
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
-    setMessages([...messages, newMessage]);
+    // setMessages([...messages, newMessage]);
+    setMessages([...messages, { name: "User", text: newMessage }]);
     setNewMessage("");
   };
 
   return (
     <div className="flex flex-col h-[500px] w-[300px] border-2 border-primary p-4 space-y-4 rounded-lg">
-      <div className="flex-grow overflow-auto">
+      <div className="flex-grow overflow-auto hide-scrollbar">
         {messages.map((message, index) => (
           <div key={index} className="bg-blue-100 px-2 rounded my-1 text-left">
-            {message}
+            {/* {message} */}
+            <span className="font-bold text-primary">{message.name}: </span>
+            {message.text}
           </div>
         ))}
         <div ref={messagesEndRef} /> {/* Invisible element to scroll to */}
