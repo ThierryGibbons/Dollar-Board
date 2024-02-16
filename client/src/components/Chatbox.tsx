@@ -1,4 +1,3 @@
-// ChatBox.js adjustment for left-aligned messages
 import React, { useState } from "react";
 
 const ChatBox = () => {
@@ -16,8 +15,7 @@ const ChatBox = () => {
     <div className="flex flex-col h-[500px] w-[300px] border-2 border-gray-200 p-4 space-y-4">
       <div className="flex-grow overflow-auto">
         {messages.map((message, index) => (
-          // Adjust the alignment here
-          <div key={index} className="bg-blue-100 p-2 rounded my-2 text-left">
+          <div key={index} className="bg-blue-100 px-2 rounded my-1 text-left">
             {message}
           </div>
         ))}
