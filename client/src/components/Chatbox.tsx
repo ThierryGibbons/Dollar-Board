@@ -12,7 +12,7 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="flex flex-col h-[500px] w-[300px] border-2 border-gray-200 p-4 space-y-4">
+    <div className="flex flex-col h-[500px] w-[300px] border-2 border-primary p-4 space-y-4 rounded-lg">
       <div className="flex-grow overflow-auto">
         {messages.map((message, index) => (
           <div key={index} className="bg-blue-100 px-2 rounded my-1 text-left">
@@ -25,7 +25,7 @@ const ChatBox = () => {
           type="text"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          className="flex-grow border-2 border-gray-200 p-2 rounded"
+          className="flex-grow border-2 border-primary p-2 rounded"
           placeholder="Type a message..."
         />
         <button
