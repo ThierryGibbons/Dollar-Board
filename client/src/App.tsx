@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Terminal from "./components/Terminal";
+import Chatbox from "./components/Chatbox";
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -37,25 +38,24 @@ function App() {
   };
 
   return (
-    <>
-      <nav>
-        <Terminal />
-      </nav>
-
-      <p>Hello World</p>
+    <div>
+      <div className="App">
+        <Chatbox />
+      </div>
+      {/* <p>Hello World</p>
       <div>
         {typeof data.items === "undefined" ? (
           <p>Loading..</p>
         ) : (
           data.items.map((item, i) => <p key={i}>{item}</p>)
         )}
-      </div>
+      </div> */}
 
       {/* Button */}
-      <div>
+      {/* <div>
         <button onClick={postData}>Click Me</button>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 }
 
