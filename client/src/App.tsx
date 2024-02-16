@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Terminal from "./components/Terminal";
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -37,6 +38,10 @@ function App() {
 
   return (
     <>
+      <nav>
+        <Terminal />
+      </nav>
+
       <p>Hello World</p>
       <div>
         {typeof data.items === "undefined" ? (
