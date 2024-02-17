@@ -16,9 +16,27 @@ const ChatBox = () => {
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
-    // setMessages([...messages, newMessage]);
     setMessages([...messages, { name: "User", text: newMessage }]);
     setNewMessage("");
+    postMessage(newMessage);
+  };
+
+  // Post message to server
+  const postMessage = (message) => {
+    fetch("http://127.0.0.1:5000/tempRoute", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ chat: message }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+      });
   };
 
   return (
