@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
+interface Message {
+  name: string;
+  text: string;
+}
+
 const ChatBox = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef(null);
 
@@ -22,7 +27,7 @@ const ChatBox = () => {
   };
 
   // Post message to server
-  const postMessage = (message) => {
+  const postMessage = (message: string): void => {
     fetch("http://127.0.0.1:5000/tempRoute", {
       method: "POST",
       headers: {
@@ -32,7 +37,6 @@ const ChatBox = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("name: ", data.name, "text: ", data.text);
         setMessages((messages) => [
           ...messages,
           { name: data.name, text: data.text },
