@@ -11,7 +11,7 @@ def tempRoute():
         data = request.json
         # Process the data here
         print(data)
-    return {"items": ["this", "is", "data"]}
+    return {"name": "Server", "text": "Hello from the server!"}
 
 if __name__ == "__main__":
     app.run(debug=True)

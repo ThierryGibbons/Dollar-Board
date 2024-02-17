@@ -17,8 +17,8 @@ const ChatBox = () => {
     e.preventDefault();
     if (!newMessage.trim()) return;
     setMessages([...messages, { name: "User", text: newMessage }]);
-    setNewMessage("");
     postMessage(newMessage);
+    setNewMessage("");
   };
 
   // Post message to server
@@ -28,11 +28,15 @@ const ChatBox = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ chat: message }),
+      body: JSON.stringify({ type: "chat", message: message }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log("name: ", data.name, "text: ", data.text);
+        setMessages((messages) => [
+          ...messages,
+          { name: data.name, text: data.text },
+        ]);
       })
       .catch((err) => {
         console.log("Error: ", err);
