@@ -21,6 +21,13 @@ const ChatBox = () => {
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
+
+    if (newMessage.trim() === "clear") {
+      setMessages([]);
+      setNewMessage("");
+      return;
+    }
+
     setMessages([...messages, { name: "User", text: newMessage }]);
     postMessage(newMessage);
     setNewMessage("");
