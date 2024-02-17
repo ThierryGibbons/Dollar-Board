@@ -52,8 +52,11 @@ const ChatBox = () => {
       <div className="flex-grow overflow-auto hide-scrollbar">
         {messages.map((message, index) => (
           <div key={index} className="bg-blue-100 px-2 rounded my-1 text-left">
-            {/* {message} */}
-            <span className="font-bold text-primary">{message.name}: </span>
+            {message.name === "User" ? (
+              <span className="font-bold text-primary">{message.name}: </span>
+            ) : (
+              <span className="font-bold text-secondary">{message.name}: </span>
+            )}
             {message.text}
           </div>
         ))}
