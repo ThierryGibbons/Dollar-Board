@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Chatbox from "./components/Chatbox";
+import Navbar from "./components/Navbar";
+
+// Pages
+import HomePage from "./pages/index";
+import AboutPage from "./pages/about";
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -8,7 +13,11 @@ function App() {
   return (
     <div>
       <div className="App">
-        <Chatbox />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
       </div>
     </div>
   );
